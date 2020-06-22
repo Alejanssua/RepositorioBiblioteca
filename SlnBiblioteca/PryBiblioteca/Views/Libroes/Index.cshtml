@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BEUBiblioteca.Libro>
+
+@{
+    ViewBag.Title = "Biblioteca";
+}
+
+<h2>Libro</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.autor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isbn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_publicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numero_ejemplares)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.autor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isbn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_publicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero_ejemplares)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.nombre)
+        </td>
+        <td>
+            <div class="btn-group">
+                @Html.ActionLink("  ", "Edit", new { id = item.idLibro }, htmlAttributes: new { @class = "btn btn-sm btn-warning glyphicon glyphicon-pencil", @title = "Editar" })
+                @Html.ActionLink("  ", "Details", new { id = item.idLibro }, htmlAttributes: new { @class = "btn btn-sm btn-primary glyphicon glyphicon-search", @title = "Ver" })
+                @Html.ActionLink("  ", "Delete", new { id = item.idLibro }, htmlAttributes: new { @class = "btn btn-sm btn-danger glyphicon glyphicon-trash", @title = "Borrar" })
+            </div>
+        </td>
+    </tr>
+}
+
+</table>
